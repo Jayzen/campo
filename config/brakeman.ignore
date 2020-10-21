@@ -1,0 +1,66 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "13a167c15471aa6c3c087551699501ac52f4da786d80d3bcf1210115df20932b",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/ui_controller.rb",
+      "line": 4,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => (params[:page] or \"index\"), {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "UiController",
+        "method": "page"
+      },
+      "user_input": "params[:page]",
+      "confidence": "High",
+      "note": "Only accessible in dev mode"
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "6fb6a69ddb569fa0c1b82457d0c9d776f8166871c1a44a005c9bb492b3288eb1",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/models/user.rb",
+      "line": 59,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "system(*[\"convert\", \"-size\", \"160x160\", \"-annotate\", \"0\", \"#{username[0]}\", \"-font\", \"DejaVu-Sans\", \"-fill\", \"white\", \"-pointsize\", \"100\", \"-gravity\", \"Center\", \"xc:#{[\"#007bff\", \"#6610f2\", \"#6f42c1\", \"#e83e8c\", \"#dc3545\", \"#fd7e14\", \"#ffc107\", \"#28a745\", \"#20c997\", \"#17a2b8\"].sample}\", \"#{\"#{Rails.root}/tmp/#{id}_default_avatar.png\"}\"])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "User",
+        "method": "generate_default_avatar"
+      },
+      "user_input": "username[0]",
+      "confidence": "Medium",
+      "note": "All param value is limited to simple chars"
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "8ac54062005a078f0baa50a2201bb479003852be0ad8aaf45ec5126cd8401541",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/admin/users_controller.rb",
+      "line": 42,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:user).permit(:name, :slug, :description, :role)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::UsersController",
+        "method": "user_params"
+      },
+      "user_input": ":role",
+      "confidence": "Medium",
+      "note": "admin panel"
+    }
+  ],
+  "updated": "2019-07-16 08:40:29 +0000",
+  "brakeman_version": "4.4.0"
+}
