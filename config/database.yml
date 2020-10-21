@@ -22,3 +22,4 @@ production:
   <<: *default
   username: deploy
   password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  database: campo_production
