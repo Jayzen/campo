@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  config.action_controller.perform_caching = true
+  #config.action_controller.perform_caching = true
   #config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/0', namespace: 'cache', expires_in: 1.day }
 
   # Don't care if the mailer can't send.

@@ -39,8 +39,8 @@ module Campo
 
     # Use redis cache store in all env
     config.cache_store = :redis_cache_store, {
-      #url: ENV["REDIS_URL"],
-      url: 'redis://47.96.76.186:6379/0',
+      url: ENV["REDIS_URL"],
+      #url: 'redis://47.96.76.186:6379/0',
       namespace: 'cache',
       expires_in: 1.day
     }
